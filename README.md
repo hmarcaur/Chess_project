@@ -27,10 +27,10 @@ The code allows to play **chess** and **draughts/checkers** games on a terminal 
 - main (*code launcher*)
 ---
 ## Potential impovements :
-- Adding the save current game possibility.
-- Developped the automatic playing (e.g. *Min/Max* algorithm).
-- Adding the possibility to play file manually.
-- Adding the possibility to cancel a move (for *user*).
+- Add the save current game possibility.
+- Set up the automatic playing (e.g. *Min/Max* algorithm).
+- Add the possibility to play file manually.
+- Add the possibility to cancel a move (for *user*).
 - Add a parser of *PGN* file.
 - Add the possibility to start a game in a given *Position*.
 - Include suggestion of moves to play directly on the board on the interface.
