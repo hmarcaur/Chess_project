@@ -20,6 +20,8 @@ Class management :
   - DraughtsPawn
   - DraughtsQueen
 
-Additional file :
+Additional files :
 - Utils (*display*)
 - main (*code launcher*)
+---
+Feel free to use this code.
