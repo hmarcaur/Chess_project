@@ -181,15 +181,17 @@ void Game::playFile(){
               unordered_set<Position, PositionHash> positions = board->getPiecePosition("all", blackPlay);
               player = blackPlay ? "Black" : "White";
               opponent = blackPlay ? "White" : "Black";
-              cout << "\n" << player << "Pieces : \n" << endl;
+              figure = blackPlay ? "\u26AB" : "\u26AA";
+              figure2 = !blackPlay ? "\u26AB" : "\u26AA";
+              cout << "\n" << player << " pieces : \n" << endl;
               for(auto it = positions.begin(); it != positions.end(); it++){
-                cout << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
+                cout << figure << " " << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
               }
               if(sq2 == "all"){ // All the pieces
                 unordered_set<Position, PositionHash> opponentPositions = board->getPiecePosition("all", blackPlay);
-                cout << "\n" << opponent << "Pieces : \n" << endl;
+                cout << "\n" << opponent << " pieces : \n" << endl;
                 for(auto it = opponentPositions.begin(); it != opponentPositions.end(); it++){
-              		cout << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
+              		cout << figure2 << " " << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
               	}
               }
               cout << "\n";
@@ -203,8 +205,9 @@ void Game::playFile(){
               if(sq2 == "all"){ // All possible VALID moves (no check about king checking after it)
                 vector<movement> validMoves = board->getAllValidMoves(blackPlay);
                 cout << "\n";
+                figure = blackPlay ? "\u26AB" : "\u26AA";
                 for(int i = 0; i < validMoves.size(); i++){
-                  cout << board->getPiece(validMoves[i].start)->toString() << " : " << validMoves[i].start.toString() << " \u21D2 " << validMoves[i].end.toString() << endl;
+                  cout << figure << " " << board->getPiece(validMoves[i].start)->toString() << " : " << validMoves[i].start.toString() << " \u21D2 " << validMoves[i].end.toString() << endl;
                 }
                 cout << "\n";
               }
@@ -213,8 +216,9 @@ void Game::playFile(){
                 try{
                   Position p = Position(sq2);
                   validMoves = board->getPiece(p)->getValidMoves(p, board);
+                  figure = board->getPiece(p)->getIsBlack() ? "\u26AB" : "\u26AA";
                   for(auto it2 = validMoves.begin(); it2 != validMoves.end(); it2++){
-                    cout << board->getPiece(p)->toString() << " : " << p.toString() << " \u21D2 " << it2->toString() << endl;
+                    cout << figure << " " << board->getPiece(p)->toString() << " : " << p.toString() << " \u21D2 " << it2->toString() << endl;
                   }
                   cout << "\n";
                 }
@@ -226,8 +230,11 @@ void Game::playFile(){
             else if(sq1 == "piece"){ // With a position
               try{
                 Position p = Position(sq2);
-                figure = blackPlay ? "\u26AA" : "\u26AB";
-                cout << "\n" << figure << " " << board->getPiece(p)->toString() << "\n" << endl;
+                if(board->emptySquare(p.get_x(), p.get_y())) cout << "\nThe square is empty !\n" << endl;
+                else{
+                  figure = blackPlay ? "\u26AB" : "\u26AA";
+                  cout << "\n" << figure << " " << board->getPiece(p)->toString() << "\n" << endl;
+                }
               }
               catch(Exception const& e){
                 cerr << "\nERROR: " << e.what() << endl; // just come back to the main while loop of the method
@@ -235,8 +242,8 @@ void Game::playFile(){
             }
             else if(sq1 != "" && sq2 == ""){ // Just a position -> piece + move
               try{
-                Position p = Position(sq2);
-                figure = blackPlay ? "\u26AA" : "\u26AB";
+                Position p = Position(sq1);
+                figure = blackPlay ? "\u26AB" : "\u26AA";
                 cout << "\n" << figure << " " << board->getPiece(p)->toString() << endl;
                 validMoves = board->getPiece(p)->getValidMoves(p, board);
                 for(auto it2 = validMoves.begin(); it2 != validMoves.end(); it2++){
@@ -318,15 +325,17 @@ void Game::play(bool reset){
           unordered_set<Position, PositionHash> positions = board->getPiecePosition("all", blackPlay);
           player = blackPlay ? "Black" : "White";
           opponent = blackPlay ? "White" : "Black";
-          cout << "\n" << player << "Pieces : \n" << endl;
+          figure = blackPlay ? "\u26AB" : "\u26AA";
+          figure2 = !blackPlay ? "\u26AB" : "\u26AA";
+          cout << "\n" << player << " pieces : \n" << endl;
           for(auto it = positions.begin(); it != positions.end(); it++){
-            cout << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
+            cout << figure << " " << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
           }
           if(strEnd == "all"){ // All the pieces
             unordered_set<Position, PositionHash> opponentPositions = board->getPiecePosition("all", blackPlay);
-            cout << "\n" << opponent << "Pieces : \n" << endl;
+            cout << "\n" << opponent << " pieces : \n" << endl;
             for(auto it = opponentPositions.begin(); it != opponentPositions.end(); it++){
-          		cout << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
+          		cout << figure2 << " " << board->getPiece(*it)->toString() << " : " << it->toString() << endl;
           	}
           }
           cout << "\n";
@@ -340,8 +349,9 @@ void Game::play(bool reset){
           if(strEnd == "all"){
             vector<movement> validMoves = board->getAllValidMoves(blackPlay);
             cout << "\n";
+            figure = blackPlay ? "\u26AB" : "\u26AA";
             for(int i = 0; i < validMoves.size(); i++){
-              cout << board->getPiece(validMoves[i].start)->toString() << " : " << validMoves[i].start.toString() << " \u21D2 " << validMoves[i].end.toString() << endl;
+              cout << figure << " " << board->getPiece(validMoves[i].start)->toString() << " : " << validMoves[i].start.toString() << " \u21D2 " << validMoves[i].end.toString() << endl;
             }
             cout << "\n";
           }
@@ -350,8 +360,9 @@ void Game::play(bool reset){
             try{
               Position p = Position(strEnd);
               validMoves = board->getPiece(p)->getValidMoves(p, board);
+              figure = board->getPiece(p)->getIsBlack() ? "\u26AB" : "\u26AA";
               for(auto it2 = validMoves.begin(); it2 != validMoves.end(); it2++){
-                cout << board->getPiece(p)->toString() << " : " << p.toString() << " \u21D2 " << it2->toString() << endl;
+                cout << figure << " " << board->getPiece(p)->toString() << " : " << p.toString() << " \u21D2 " << it2->toString() << endl;
               }
               cout << "\n";
             }
@@ -363,8 +374,11 @@ void Game::play(bool reset){
         else if(strStart == "piece"){ // With a position
           try{
             Position p = Position(strEnd);
-            figure = blackPlay ? "\u26AA" : "\u26AB";
-            cout << "\n" << figure << " " << board->getPiece(p)->toString() << "\n" << endl;
+            if(board->emptySquare(p.get_x(), p.get_y())) cout << "\nThe square is empty !\n" << endl;
+            else{
+              figure = board->getPiece(p)->getIsBlack() ? "\u26AB" : "\u26AA";
+              cout << "\n" << figure << " " << board->getPiece(p)->toString() << "\n" << endl;
+            }
           }
           catch(Exception const& e){
             cerr << "\nERROR: " << e.what() << endl; // just come back to the main while loop of the method
@@ -372,8 +386,8 @@ void Game::play(bool reset){
         }
         else if(strStart != "" && strEnd == ""){ // Just a position -> piece + move
           try{
-            Position p = Position(strEnd);
-            figure = blackPlay ? "\u26AA" : "\u26AB";
+            Position p = Position(strStart);
+            figure = blackPlay ? "\u26AB" : "\u26AA";
             cout << "\n" << figure << " " << board->getPiece(p)->toString() << endl;
             validMoves = board->getPiece(p)->getValidMoves(p, board);
             for(auto it2 = validMoves.begin(); it2 != validMoves.end(); it2++){
