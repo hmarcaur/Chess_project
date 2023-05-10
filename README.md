@@ -3,7 +3,6 @@ Code of the chess project for OOP (Object Oriented Programming) and SE (software
 ---
 The code is writing in C++ language. It could be launch in any terminal by typing `make -all`, then `./Chess`.
 > Note that the interface was designed to be launched in *Windows* **terminale** using *Windows Power shell*, *Campbell*  color scheme and *Lucida Console* font face.
-
 The code allows to play **chess** and **draughts/checkers** games on a terminal interface. Additionally, the user(s) can get some information to help him/them while playing.
 ---
 ## Class management :
