@@ -36,5 +36,7 @@ The code allows to play **chess** and **draughts/checkers** games on a terminal 
 - Add the possibility to start a game in a given *Position*.
 - Include suggestion of moves to play directly on the board on the interface.
 - Only propose truly valid moves in chess, no those who put in check his own king.
+- Upgrade error management (i.e. *Exception* class).
+- Add the best move suggestion.
 ---
 Feel free to *fork* the project, use and improve it.
