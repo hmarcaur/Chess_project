@@ -6,7 +6,7 @@ The code is writing in C++ language. It could be launch in any terminal by typin
 
 The code allows to play **chess** and **draughts/checkers** games on a terminal interface. Additionally, the user(s) can get some information to help him/them while playing.
 ---
-## Class management :
+## Class management
 - Game
 - Position
 - Board (*abstract*)
@@ -22,12 +22,12 @@ The code allows to play **chess** and **draughts/checkers** games on a terminal 
   - DraughtsPawn
   - DraughtsQueen
 
-## Additional files :
+## Additional files
 - test (contains draft code to efficiently test *check*/*checkmate*)
 - Utils (*display*)
 - main (*code launcher*)
 ---
-## Potential impovements :
+## Potential impovements
 - Add the save current game possibility.
 - Set up the automatic playing (e.g. *Min/Max* algorithm).
 - Add the possibility to play file manually.
