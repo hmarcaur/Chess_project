@@ -23,6 +23,7 @@ The code allows to play **chess** and **draughts/checkers** games on a terminal 
   - DraughtsQueen
 
 ## Additional files :
+- test (contains draft code to efficiently test *check*/*checkmate*)
 - Utils (*display*)
 - main (*code launcher*)
 ---
