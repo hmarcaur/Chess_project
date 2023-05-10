@@ -26,7 +26,7 @@ The code allows to play **chess** and **draughts/checkers** games on a terminal 
 - Utils (*display*)
 - main (*code launcher*)
 ---
-## Impovements :
+## Potential impovements :
 - Adding the save current game possibility.
 - Developped the automatic playing (e.g. *Min/Max* algorithm).
 - Adding the possibility to play file manually.
