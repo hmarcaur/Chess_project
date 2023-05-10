@@ -1,6 +1,6 @@
 # include "Rook.hpp"
 
-Rook::Rook(bool isBlack): Piece(isBlack, "Rook"){
+Rook::Rook(bool isBlack): Piece(isBlack, "rook"){
 	/*
 	Class constructor 'Rook'.
 	*/

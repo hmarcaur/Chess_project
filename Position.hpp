@@ -1,6 +1,8 @@
 #ifndef _Position_hpp_
 #define _Position_hpp_
 
+# include "Exception.hpp"
+
 # include <iostream>
 # include <string>
 # include <cmath>
@@ -33,8 +35,7 @@ class Position{
 // Class to produce the associated 'hash' that we will use (in unordered_set).
 class PositionHash{
   public:
-  size_t operator() (const Position &pos) const
-  {
+  size_t operator() (const Position &pos) const{
 		size_t xHash = std::hash<int>()(pos.get_x());
     size_t yHash = std::hash<int>()(pos.get_y());
     return xHash ^ yHash;

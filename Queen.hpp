@@ -6,8 +6,6 @@
 
 using namespace std;
 
-//class Plateau;
-
 class Queen : public Bishop, public Rook{
 
 	public:

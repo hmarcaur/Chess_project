@@ -4,14 +4,14 @@ Position::Position(int xx, int yy): x(xx), y(yy){
 	/*
 	Class constructor 'Position' with two integer coordinates.
 	*/
-	if((xx < 0 || yy < 0) && (xx != -1 || yy != -1)) throw string("Invalid coordinate(s) : negative.");
+	if((xx < 0 || yy < 0) && (xx != -1 || yy != -1)) throw Exception(0, "Invalid coordinate(s) : negative.", 0);
 }
 
 Position::Position(const Position &p, int dx, int dy){
 	/*
 	Class constructor 'Position' with a 'Position' and two shifts (integers).
 	*/
-	if(p.x + dx < 0 || p.y + dy < 0) throw string("Invalid coordinate(s) : negative.");
+	if(p.x + dx < 0 || p.y + dy < 0) throw Exception(0, "Invalid coordinate(s) : negative.", 0);
 	x = p.x + dx;
 	y = p.y + dy;
 }
@@ -26,17 +26,17 @@ Position::Position(string str){
 	}
 	else{
 		// Capitalize the string
-		string v;
-		string s;
 		char c;
+		string cString;
+		string s; // initial string in capital letters
 		for(int i = 0; i < str.length() ; i ++){
-			c = str[i];
-			c = toupper(c);
-			v = c;
-			s += v;
+			c = str[i]; // Extraction of the i-th character (in 'character' format)
+			c = toupper(c); // Capitalize the i-th character
+			cString = c; // formatting in 'string'
+			s += cString; // rebuilding of the initial string (in capital letters)
 		}
-		if(s.size() <= 1) throw string("Invalid coordinates : length - too short.");
-		if(s[0] < 65 || s[0] > 90) throw string("Invalid coordinates : format - no letters at the beginning.");
+		if(s.size() <= 1) throw Exception(1, "Invalid coordinates : length - too short.", 0);
+		if(s[0] < 65 || s[0] > 90) throw Exception(2, "Invalid coordinates : format - no letters at the beginning.", 0);
 
 		x = 0;
 		y = 0;
@@ -62,9 +62,9 @@ Position::Position(string str){
 
 		s_y = s.substr(i, j - i);
 
-		if(j != s.length()) throw string("Invalid coordinates : format - crossed letters and numbers.");
+		if(j != s.length()) throw Exception(3, "Invalid coordinates : format - crossed letters and numbers.", 0);
 
-		y = stoi(s_y);
+		y = stoi(s_y) - 1;
 	}
 }
 

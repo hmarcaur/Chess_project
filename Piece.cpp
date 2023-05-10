@@ -46,9 +46,9 @@ bool Piece::getFirstMove() const{
 	return false;
 }
 
-unordered_set<Position, PositionHash> Piece::getValidMoves(const Position &start, const Board* board) const{
+unordered_set<Position, PositionHash> Piece::getValidMoves(const Position &start, Board* board) const{
 	/*
-	Method to get all the valid movements of a piece.
+	Method to get all the valid movements of a piece from 'start'.
 	*/
 	unordered_set<Position, PositionHash> positions = board->getPossiblePositions(start);
 	unordered_set<Position, PositionHash> possibleMoves;
@@ -56,7 +56,20 @@ unordered_set<Position, PositionHash> Piece::getValidMoves(const Position &start
 		if(isValidMove(start, *it, board)) possibleMoves.insert(*it);
 	}
 	return possibleMoves;
-	return positions;
+}
+
+Position Piece::isValidCatch(const Position &start, const Position &end, const Board* board, const Position &initialPosition) const{
+	/*
+	Returns the 'Position' of the 'Piece' to catch if it is valid, 'Position(-1, -1)' otherwise.
+	*/
+	return Position(-1, -1);
+}
+
+bool Piece::isValidTrip(const Position &start, const Position &end, const Board* board) const{
+	/*
+	Returns 'true' if the 'Piece' in position 'start' can move to 'end' without catching or encountering any piece.
+	*/
+	return false;
 }
 
 Piece::~Piece(){

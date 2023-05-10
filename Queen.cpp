@@ -1,6 +1,6 @@
 # include "Queen.hpp"
 
-Queen::Queen(bool isBlack): Bishop(isBlack), Rook(isBlack), Piece(isBlack, "Queen"){
+Queen::Queen(bool isBlack): Bishop(isBlack), Rook(isBlack), Piece(isBlack, "queen"){
 	/*
 	Class constructor 'Queen'.
 	*/

@@ -19,7 +19,7 @@ all: $(EXEC)
 Chess: $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
-main.o: Position.hpp Piece.hpp Board.hpp Chessboard.hpp Pawn.hpp Queen.hpp Bishop.hpp Knight.hpp Rook.hpp King.hpp
+main.o: Position.hpp Piece.hpp Board.hpp Chessboard.hpp Pawn.hpp Queen.hpp Bishop.hpp Knight.hpp Rook.hpp King.hpp Exception.hpp Game.hpp Utils.hpp Draughtsboard.hpp DraughtsPawn.hpp DraughtsQueen.hpp
 
 %.o: %.c
 	@$(CC) -o $@ -c $< $(CFLAGS)

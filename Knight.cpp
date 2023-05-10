@@ -1,6 +1,6 @@
 # include "Knight.hpp"
 
-Knight::Knight(bool isBlack): Piece(isBlack, "Knight"){
+Knight::Knight(bool isBlack): Piece(isBlack, "knight"){
 	/*
 	Class constructor 'Knight'.
 	*/
